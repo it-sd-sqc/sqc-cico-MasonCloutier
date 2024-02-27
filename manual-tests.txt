@@ -69,3 +69,12 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 
 ## Expected results
 * The field should ignore non-numerical input.
+
+Module 5: Add proceed button
+
+## Test steps
+1. Build and run CiCo.
+2. Type "00000000" into the card field.
+
+## Expected results
+* The card should be accepted and the next screen should show a button labeled "Continue".
