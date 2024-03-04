@@ -78,3 +78,12 @@ Module 5: Add proceed button
 
 ## Expected results
 * The card should be accepted and the next screen should show a button labeled "Continue".
+
+# Test automatic submitting 
+
+## Test steps
+1. Build and run CiCo.
+2. Enter 00000000 into the field
+
+## Expected results
+* The program should process the card number as soon as the eigth digit is entered.
