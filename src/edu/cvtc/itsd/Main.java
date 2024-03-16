@@ -8,6 +8,8 @@ import java.sql.*;
 import java.util.TimerTask;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.*;
 
 // CiCo application's primary class ///////////////////////////////////////////
@@ -259,13 +261,36 @@ public class Main {
     fieldNumber.setAlignmentX(JComponent.CENTER_ALIGNMENT);
     fieldNumber.setBackground(Color.green);
     fieldNumber.setForeground(Color.magenta);
+    fieldNumber.getDocument().addDocumentListener(new DocumentListener() {
+      @Override
+      public void insertUpdate(DocumentEvent e) {
+        checkCardNumber();
+      }
+
+      @Override
+      public void removeUpdate(DocumentEvent e) {
+        checkCardNumber();
+      }
+
+      @Override
+      public void changedUpdate(DocumentEvent e) {
+        checkCardNumber();
+      }
+
+      private void checkCardNumber() {
+        String cardNumber = fieldNumber.getText().trim();
+        if (cardNumber.length() == 8) {
+          processCard();
+        }
+      }
+    });
     panelMain.add(fieldNumber);
 
-    JButton updateButton = new JButton("Update");
-    updateButton.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-    updateButton.addActionListener(new Update());
-    updateButton.setForeground(Color.green);
-    panelMain.add(updateButton);
+//    JButton updateButton = new JButton("Update");
+//    updateButton.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+//    updateButton.addActionListener(new Update());
+//    updateButton.setForeground(Color.green);
+//    panelMain.add(updateButton);
 
     panelMain.add(Box.createVerticalGlue());
 
